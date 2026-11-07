@@ -322,3 +322,5 @@ define Package/ath12k-wifi-glinet-gl-be3600/install
 	$(INSTALL_DATA) ./board-2.bin.gl-be3600.QCN6432 $(1)/lib/firmware/ath12k/QCN6432/hw1.0/board-2.bin
 	$(INSTALL_DATA) ./ipq5332_qcn6432.regdb $(1)/lib/firmware/ath12k/QCN6432/hw1.0/regdb.bin
 endef
+
+$(eval $(call BuildPackage,ath12k-wifi-glinet-gl-be3600))
