@@ -256,3 +256,17 @@ define Device/indio_um-325be
   DEVICE_PACKAGES := ath12k-wifi-indio-um-325be ath12k-firmware-qcn92xx ath12k-firmware-ipq5332
 endef
 TARGET_DEVICES += indio_um-325be
+
+define Device/glinet_gl-be3600
+  DEVICE_TITLE := GL.iNet GL-BE3600
+  DEVICE_DTS := ipq5332-glinet-gl-be3600
+  DEVICE_DTS_DIR := ../dts
+  DEVICE_DTS_CONFIG := config@mi04.1-c2
+  SUPPORTED_DEVICES := glinet,gl-be3600 qcom,ipq5332-ap-mi04.1-c2
+  IMAGES := sysupgrade.bin nand-factory.bin nand-factory.ubi
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+  IMAGE/nand-factory.bin := append-ubi | qsdk-ipq-factory-nand
+  IMAGE/nand-factory.ubi := append-ubi
+  DEVICE_PACKAGES := ath12k-wifi-glinet-gl-be3600 ath12k-firmware-ipq5332-peb -ath12k-firmware-qcn92xx
+endef
+TARGET_DEVICES += glinet_gl-be3600

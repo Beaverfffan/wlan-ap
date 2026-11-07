@@ -1,0 +1,16 @@
+---
+profile: glinet_gl-be3600
+target: ipq53xx
+subtarget: generic
+description: Build image for the GL.iNet GL-BE3600
+image: bin/targets/ipq53xx/generic/openwrt-ipq53xx-glinet_gl-be3600-squashfs-sysupgrade.bin
+feeds:
+  - name: qca
+    path: ../../feeds/qca-wifi-7
+include:
+  - ucentral-ap
+packages:
+  - ipq53xx
+  - qca-ssdk-shell
+diffconfig: |
+  CONFIG_KERNEL_IPQ_MEM_PROFILE=0

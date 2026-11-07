@@ -309,3 +309,16 @@ $(eval $(call BuildPackage,ath12k-wifi-cig-wf672))
 $(eval $(call BuildPackage,ath12k-wifi-asterfusion-ap7330))
 $(eval $(call BuildPackage,ath12k-wifi-cig-wf672b))
 $(eval $(call BuildPackage,ath12k-wifi-cig-wf197))
+
+define Package/ath12k-wifi-glinet-gl-be3600
+$(call Package/ath12k-wifi-default)
+    TITLE:=board-2.bin for GL.iNet GL-BE3600
+endef
+
+define Package/ath12k-wifi-glinet-gl-be3600/install
+	$(INSTALL_DIR) $(1)/lib/firmware/ath12k/IPQ5332/hw1.0/
+	$(INSTALL_DIR) $(1)/lib/firmware/ath12k/QCN6432/hw1.0/
+	$(INSTALL_DATA) ./board-2.bin.gl-be3600.IPQ5332 $(1)/lib/firmware/ath12k/IPQ5332/hw1.0/board-2.bin
+	$(INSTALL_DATA) ./board-2.bin.gl-be3600.QCN6432 $(1)/lib/firmware/ath12k/QCN6432/hw1.0/board-2.bin
+	$(INSTALL_DATA) ./ipq5332_qcn6432.regdb $(1)/lib/firmware/ath12k/QCN6432/hw1.0/regdb.bin
+endef
