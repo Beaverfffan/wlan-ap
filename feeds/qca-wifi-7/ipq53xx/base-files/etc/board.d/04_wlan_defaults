@@ -1,0 +1,28 @@
+#!/bin/sh
+
+. /lib/functions/uci-defaults.sh
+
+board_config_update
+
+board=$(board_name)
+
+case "$board" in
+glinet,gl-be3600)
+	json_select_object wlan
+	json_select_object defaults
+		json_add_string country "CN"
+		json_select_object ssids
+			json_select_object all
+				json_add_string ssid "GL-BE3600"
+				json_add_string encryption "psk2"
+				json_add_string key "12345678"
+			json_select ..
+		json_select ..
+	json_select ..
+	json_select ..
+	;;
+esac
+
+board_config_flush
+
+exit 0
